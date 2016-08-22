@@ -133,24 +133,20 @@ function custom_echo($x, $length)
                     <div class="home_abt_lft">
                         <h2>ABOUT US</h2>
                         <div class="home_abt_cntnt">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p> <a href="#" title="">Read More</a> </div>
-                        <figure> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/abt_img.png" alt="abt_img"> </figure>
+                            <p> 
+							<?php echo $aboutData		= get_field('home_page_about_us', get_the_ID()); ?>
+							</p> <a href='<?php echo site_url()."/about-us/"; ?>' title="">Read More</a> </div>
+                        <figure> 
+						<?php $aboutData		= get_field('home_about_us_image', get_the_ID()); 
+									$aboutImageUrl 	=	$aboutData['sizes']['home-about-us'];
+							?>
+						<img src="<?php echo $aboutImageUrl; ?>" alt="abt_img"> </figure>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="home_abt_rght">
                         <h4>CONTACT US</h4>
-                        <form>
-                            <p>
-                                <input type="text" placeholder="Name:"> </p>
-                            <p>
-                                <input type="email" placeholder="Email:"> </p>
-                            <p>
-                                <input type="tel" placeholder="Phone:"> </p>
-                            <p>
-                                <textarea placeholder="Message"></textarea>
-                            </p>
-                            <input type="submit" value="SUBMIT"> </form>
+                       <?php echo do_shortcode('[contact-form-7 id="51" title="Home Page Contact Form"]'); ?>
                     </div>
                 </div>
             </div>
@@ -161,8 +157,7 @@ function custom_echo($x, $length)
         <div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#caro
-                                 usel-example-generic1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic1" data-slide-to="1"></li>
                 <li data-target="#carousel-example-generic1" data-slide-to="2"></li>
                 <li data-target="#carousel-example-generic1" data-slide-to="3"></li>
@@ -210,5 +205,34 @@ function custom_echo($x, $length)
         </div>
     </section>
     <!--tetsimonial section end-->
- 
+ <script>
+	 jQuery(document).ready(function(){
+		jQuery(".home-name").attr('maxlength','35');
+		jQuery(".home-phone").attr('maxlength','15');
+		
+			jQuery("input[name='Name']").keypress(function(event){
+				   var inputValue = event.which;
+				   // allow letters and whitespaces only.
+				   if((inputValue > 33 && inputValue < 64) || (inputValue > 90 && inputValue < 97 ) || (inputValue > 123 && inputValue < 126)&& (inputValue != 32)){
+					   event.preventDefault();
+				   }
+			});
+			
+			 $(".home-phone").keydown(function (e) {	
+				// Allow: backspace, delete, tab, escape, enter and .
+				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+					 // Allow: Ctrl+A, Command+A
+					(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+					 // Allow: home, end, left, right, down, up
+					(e.keyCode >= 35 && e.keyCode <= 40)) {
+						 // let it happen, don't do anything
+						 return;
+				}
+				// Ensure that it is a number and stop the keypress
+				if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+					e.preventDefault();
+				}
+			});
+	});
+ </script>
 <?php get_footer(); ?>

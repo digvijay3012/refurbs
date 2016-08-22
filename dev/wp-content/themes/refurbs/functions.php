@@ -551,3 +551,9 @@ function add_testinomialslider_postType() {
 }	
 // Add  image size
 add_image_size( 'testinomial-img', 278, 159, true );
+// Add  home image size
+add_image_size( 'home-about-us', 330, 630, true );
+// Add  pages background image size
+add_image_size( 'page_backgound_image', 1920, 315, true );
+// Add  more about us  image size
+add_image_size( 'more_about_us_image', 246, 421, true );			

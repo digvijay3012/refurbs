@@ -17,42 +17,95 @@
                     <div class="col-sm-12">
                         <div class="ftr_sec1">
                             <h4>About Us</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                            <p><?php if ( function_exists( 'ot_get_option' ) ) : ?>
+								<?php echo $footer_about_us = ot_get_option( 'footer_about_us' ); ?>
+								
+						<?php endif; ?></p>
                         </div>
                         <div class="ftr_sec1">
                             <h4>Quick links</h4>
                             <ul>
-                                <li class="current-menu-item"><a href="index.html" title=""><i class="fa fa-caret-right" aria-hidden="true"></i> Home</a></li>
-                                <li><a href="about.html" title=""><i class="fa fa-caret-right" aria-hidden="true"></i>About us</a></li>
-                                <li><a href="service.html" title=""><i class="fa fa-caret-right" aria-hidden="true"></i>Our Services</a></li>
-                                <li><a href="gallery.html" title=""><i class="fa fa-caret-right" aria-hidden="true"></i>Gallery</a></li>
-                                <li><a href="contact.html" title=""><i class="fa fa-caret-right" aria-hidden="true"></i>Contact us</a></li>
+							<?php $defaults = array(
+							'theme_location'  => '',
+							'menu'            => 'main_menu',
+							'container'       => '',
+							'container_class' => '',
+							'container_id'    => '',
+							'menu_class'      => 'current-menu-item',
+							'menu_id'         => '',
+							'echo'            => true,
+							'fallback_cb'     => 'wp_page_menu',
+							'before'          => '',
+							'after'           => '',
+							'link_before'     => '',
+							'link_after'      => '',
+							'items_wrap'      => '%3$s',
+							'depth'           => 0,
+							'walker'          => ''
+							);
+
+							wp_nav_menu( $defaults );
+							?>
                             </ul>
-                        </div>
+                        </div>	
                         <div class="ftr_sec1 ftr_adrs">
                             <h4>Contact us</h4>
                             <ul>
-                                <li>
-                                    <label><img src="images/map.svg" alt="map"><span>Address</span></label>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit,</p>
+                                <li>		
+                                    <label><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/map.svg" alt="map"><span>Address</span></label>
+                                    <p><?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php echo $footer_address = ot_get_option( 'footer_address' ); ?>
+								
+										<?php endif; ?>
+									</p>
                                 </li>
                                 <li>
                                     <label><i class="fa fa-mobile" aria-hidden="true"></i><span>Tel No:</span></label>
-                                    <p><a href="tel:123-456-7890" title="">123-456-7890</a></p>
+                                    <p><a href="tel:123-456-7890" title=""><?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php echo $footer_telephone = ot_get_option( 'footer_telephone' ); ?>
+								
+										<?php endif; ?></a></p>
                                 </li>
                                 <li>
                                     <label><i class="atrate" aria-hidden="true">@</i><span>Email:</span></label>
-                                    <p><a href="mailto:info@customrefrigerationfabrication.com" title="">info@customrefrigerationfabrication.com</a></p>
+                                    <p><a href="mailto:<?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php echo $footer_email = ot_get_option( 'footer_email' ); ?>
+								
+										<?php endif; ?>" title=""><?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php echo $footer_email = ot_get_option( 'footer_email' ); ?>
+								
+										<?php endif; ?></a></p>
                                 </li>
                             </ul>
                         </div>
                         <div class="ftr_sec1 ftr_social">
                             <h4>Follow Us On:</h4>
                             <ul>
-                                <li> <a href="#" title=""><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a> </li>
-                                <li> <a href="#" title=""><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a> </li>
-                                <li> <a href="#" title=""><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a> </li>
-                                <li> <a href="#" title=""><i class="fa fa-pinterest-p" aria-hidden="true"></i><span>Pinterest</span></a> </li>
+							<?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php  $facebook = ot_get_option( 'facebook' ); 
+											if($facebook !=''){
+												echo ' <li> <a href="'.$facebook.'" target="_blank" title=""><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a> </li>';
+											} ?>
+										<?php endif; ?>
+                               <?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php  $twitter = ot_get_option( 'twitter' ); 
+											if($twitter !=''){
+												echo '<li> <a href="'.$twitter.'" target="_blank" title=""><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a> </li>';
+											} ?>
+										<?php endif; ?>
+                                 <?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php  $instagram = ot_get_option( 'instagram' ); 
+											if($instagram !=''){
+												echo '<li> <a href="'.$instagram.'" target="_blank" title=""><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a> </li>';
+											} ?>
+										<?php endif; ?>
+                                <?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php  $pinterest = ot_get_option( 'pinterest' ); 
+											if($instagram !=''){
+												echo '<li> <a href="'.$pinterest.'" target="_blank" title=""><i class="fa fa-pinterest-p" aria-hidden="true"></i><span>Pinterest</span></a> </li>';
+											} ?>
+										<?php endif; ?>
+                               
                             </ul>
                         </div>
                     </div>
