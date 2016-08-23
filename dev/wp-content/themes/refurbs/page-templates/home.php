@@ -4,6 +4,7 @@ Template Name: Home
 */
 get_header(); ?>
 <?php 
+global $post;
 function custom_echo($x, $length)
 {
   if(strlen($x)<=$length)
@@ -21,26 +22,34 @@ function custom_echo($x, $length)
         <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/banner1.jpg" alt="banner1">
+			<?php
+			$flag	=	1;
+				$args 		= array( 'post_type' => 'home_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
+				$GetPosts 	= get_posts( $args );
+				foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
+			?>
+                <div class="item <?php if($flag==1){ echo 'active'; } ?>"> 
+				<?php
+				$bannrTitle	=	get_the_title();
+					if ( has_post_thumbnail() ) { 
+							the_post_thumbnail('home_slider_img', array( 'alt' => $bannrTitle )); 
+						}
+				?>  
                     <div class="banner-caption">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h2>Lorem ipsum dolor sit amet <br> consectetur adipiscing eli</h2> <a href="#" title="" class="btn_orng">Contact Us</a> </div>
+                                   <?php the_content(); ?>
+								</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/banner1.jpg" alt="banner1">
-                    <div class="banner-caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h2>Lorem ipsum dolor sit amet <br> consectetur adipiscing eli</h2> <a href="#" title="" class="btn_orng">Contact Us</a> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <?php 
+			  $flag++;
+				endforeach; 
+				wp_reset_postdata();
+			?>	  
             </div>
             <!-- Controls -->
             <div class="container">
@@ -61,18 +70,19 @@ function custom_echo($x, $length)
                     <div class="home_service_innr trans">
                         <ul>
 						<?php
-							global $post;
+
 							$args 		= array( 'post_type' => 'service','post_status' => 'publish','posts_per_page' => 3, 'order'=> 'ASC', );
 							$GetPosts 	= get_posts( $args );
 							foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
 						?>
 						 <li>
-                                <a href="<?php the_permalink(); ?>" title="<?php  the_title(); ?>">
+                                <a href="<?php echo site_url(); ?>/services-detail/#s_<?php echo $post->ID; ?>" title="<?php  the_title(); ?>">
                                     <div class="home_service_bx">
                                         <figure>
 										<?php
+										$serviceTitle	=	get_the_title();
 											if ( has_post_thumbnail() ) { 
-												the_post_thumbnail( 'home-service' ); 
+												the_post_thumbnail( 'home-service', array( 'alt' => $serviceTitle )); 
 											}
 										?>
 										<span></span></figure>
@@ -101,7 +111,6 @@ function custom_echo($x, $length)
                 <div class="col-sm-12">
                     <div id="owl-demo" class="owl-carousel owl-theme">
 					<?php
-							global $post;
 							$args 		= array( 'post_type' => 'client_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
 							$GetPosts 	= get_posts( $args );
 							foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
@@ -165,7 +174,7 @@ function custom_echo($x, $length)
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
 			<?php
-				global $post;
+				
 				$flag=1;
 				$args 		= array( 'post_type' => 'testinomial_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
 				$GetPosts 	= get_posts( $args );
@@ -180,8 +189,9 @@ function custom_echo($x, $length)
                                     <div class="testi_bx_lft">
                                         <div class="testi_bx_img">
                                             <figure> <?php
+														$testnomialTitle	=	get_the_title();
 														if ( has_post_thumbnail() ) { 
-															the_post_thumbnail('testinomial-img'); 
+															the_post_thumbnail('testinomial-img' , array( 'alt' => $testnomialTitle )); 
 														}
 													?> 
                                                 <div class="border_org"> <span class="bor_org_top"></span> <span class="bor_org_btm"></span> </div>
@@ -205,34 +215,5 @@ function custom_echo($x, $length)
         </div>
     </section>
     <!--tetsimonial section end-->
- <script>
-	 jQuery(document).ready(function(){
-		jQuery(".home-name").attr('maxlength','35');
-		jQuery(".home-phone").attr('maxlength','15');
-		
-			jQuery("input[name='Name']").keypress(function(event){
-				   var inputValue = event.which;
-				   // allow letters and whitespaces only.
-				   if((inputValue > 33 && inputValue < 64) || (inputValue > 90 && inputValue < 97 ) || (inputValue > 123 && inputValue < 126)&& (inputValue != 32)){
-					   event.preventDefault();
-				   }
-			});
-			
-			 $(".home-phone").keydown(function (e) {	
-				// Allow: backspace, delete, tab, escape, enter and .
-				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-					 // Allow: Ctrl+A, Command+A
-					(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
-					 // Allow: home, end, left, right, down, up
-					(e.keyCode >= 35 && e.keyCode <= 40)) {
-						 // let it happen, don't do anything
-						 return;
-				}
-				// Ensure that it is a number and stop the keypress
-				if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-					e.preventDefault();
-				}
-			});
-	});
- </script>
+
 <?php get_footer(); ?>

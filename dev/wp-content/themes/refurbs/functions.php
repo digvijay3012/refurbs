@@ -557,3 +557,141 @@ add_image_size( 'home-about-us', 330, 630, true );
 add_image_size( 'page_backgound_image', 1920, 315, true );
 // Add  more about us  image size
 add_image_size( 'more_about_us_image', 246, 421, true );			
+// Add  gallery  image size
+add_image_size( 'gallery_image', 458, 406, true );	
+// Add  home_slider_img  image size
+add_image_size( 'home_slider_img', 1920, 676, true );	
+// Add  innr_service_img  image size
+add_image_size( 'innr_service_img', 672, 523, true );	
+// Add  Inner Service slider
+add_image_size( 'service_slider_image', 338, 490, true );	
+
+// Register gallery Taxnomy
+add_action( 'init', 'create_gallery_tax' );
+
+function create_gallery_tax() {
+	register_taxonomy(
+		'gallery_cat',
+		'refurbs_gallery',
+		array(
+			'label' => __( 'Categories' ),
+			'rewrite' => array( 'slug' => 'gallery_cat' ),
+			'hierarchical' => true,
+		)
+	);
+}
+//  gallery custom post type
+add_action( 'init', 'add_gallery_postType' );
+function add_gallery_postType() {
+	$labels = array(
+		'name'               => _x( 'Gallery', 'post type general name', 'your-plugin-textdomain' ),
+		'singular_name'      => _x( 'Gallery', 'post type singular name', 'your-plugin-textdomain' ),
+		'menu_name'          => _x( 'Gallery', 'admin menu', 'your-plugin-textdomain' ),
+		'name_admin_bar'     => _x( 'Gallery', 'add new on admin bar', 'your-plugin-textdomain' ),
+		'add_new'            => _x( 'Add New', 'Gallery', 'your-plugin-textdomain' ),
+		'add_new_item'       => __( 'Add New Gallery', 'your-plugin-textdomain' ),
+		'new_item'           => __( 'New Gallery', 'your-plugin-textdomain' ),
+		'edit_item'          => __( 'Edit Gallery', 'your-plugin-textdomain' ),
+		'view_item'          => __( 'View Gallery', 'your-plugin-textdomain' ),
+		'all_items'          => __( 'All Galleries', 'your-plugin-textdomain' ),
+		'search_items'       => __( 'Search Gallery', 'your-plugin-textdomain' ),
+		'parent_item_colon'  => __( 'Parent Gallery:', 'your-plugin-textdomain' ),
+		'not_found'          => __( 'No Gallery found.', 'your-plugin-textdomain' ),
+		'not_found_in_trash' => __( 'No Gallery found in Trash.', 'your-plugin-textdomain' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+         'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'refurbs_gallery' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'thumbnail'),
+		 'taxonomies'          => array( 'gallery_cat' )
+	);
+
+	register_post_type( 'refurbs_gallery', $args );
+}
+// Home Page slider custom post type
+add_action( 'init', 'add_home_slider_postType' );
+function add_home_slider_postType() {
+	$labels = array(
+		'name'               => _x( 'Sliders', 'post type general name', 'your-plugin-textdomain' ),
+		'singular_name'      => _x( 'Slider', 'post type singular name', 'your-plugin-textdomain' ),
+		'menu_name'          => _x( 'Home Slider', 'admin menu', 'your-plugin-textdomain' ),
+		'name_admin_bar'     => _x( 'Slider', 'add new on admin bar', 'your-plugin-textdomain' ),
+		'add_new'            => _x( 'Add New', 'slider', 'your-plugin-textdomain' ),
+		'add_new_item'       => __( 'Add New Slider', 'your-plugin-textdomain' ),
+		'new_item'           => __( 'New Slider', 'your-plugin-textdomain' ),
+		'edit_item'          => __( 'Edit Slider', 'your-plugin-textdomain' ),
+		'view_item'          => __( 'View Slider', 'your-plugin-textdomain' ),
+		'all_items'          => __( 'All Sliders', 'your-plugin-textdomain' ),
+		'search_items'       => __( 'Search Slider', 'your-plugin-textdomain' ),
+		'parent_item_colon'  => __( 'Parent Slider:', 'your-plugin-textdomain' ),
+		'not_found'          => __( 'No Slider found.', 'your-plugin-textdomain' ),
+		'not_found_in_trash' => __( 'No Slider found in Trash.', 'your-plugin-textdomain' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+         'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'home_slider' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'thumbnail')
+	);
+
+	register_post_type( 'home_slider', $args );
+}
+// Service Inner Page slider custom post type
+add_action( 'init', 'add_service_inner_slider_postType' );
+function add_service_inner_slider_postType() {
+	$labels = array(
+		'name'               => _x( 'Sliders', 'post type general name', 'your-plugin-textdomain' ),
+		'singular_name'      => _x( 'Slider', 'post type singular name', 'your-plugin-textdomain' ),
+		'menu_name'          => _x( 'Service Page Slider', 'admin menu', 'your-plugin-textdomain' ),
+		'name_admin_bar'     => _x( 'Slider', 'add new on admin bar', 'your-plugin-textdomain' ),
+		'add_new'            => _x( 'Add New', 'slider', 'your-plugin-textdomain' ),
+		'add_new_item'       => __( 'Add New Slider', 'your-plugin-textdomain' ),
+		'new_item'           => __( 'New Slider', 'your-plugin-textdomain' ),
+		'edit_item'          => __( 'Edit Slider', 'your-plugin-textdomain' ),
+		'view_item'          => __( 'View Slider', 'your-plugin-textdomain' ),
+		'all_items'          => __( 'All Sliders', 'your-plugin-textdomain' ),
+		'search_items'       => __( 'Search Slider', 'your-plugin-textdomain' ),
+		'parent_item_colon'  => __( 'Parent Slider:', 'your-plugin-textdomain' ),
+		'not_found'          => __( 'No Slider found.', 'your-plugin-textdomain' ),
+		'not_found_in_trash' => __( 'No Slider found in Trash.', 'your-plugin-textdomain' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+         'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'service_slider' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'thumbnail')
+	);
+
+	register_post_type( 'service_slider', $args );	
+}				

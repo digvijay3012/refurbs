@@ -128,6 +128,36 @@
         </div>
     </footer>
 <?php wp_footer(); ?>
+ <script>
+	 jQuery(document).ready(function(){
+		jQuery(".home-name").attr('maxlength','35');
+		jQuery(".home-phone").attr('maxlength','15');
+		
+			jQuery("input[name='Name']").keypress(function(event){
+				   var inputValue = event.which;
+				   // allow letters and whitespaces only.
+				   if((inputValue > 33 && inputValue < 64) || (inputValue > 90 && inputValue < 97 ) || (inputValue > 123 && inputValue < 126)&& (inputValue != 32)){
+					   event.preventDefault();
+				   }
+			});
+			
+			 $(".home-phone").keydown(function (e) {	
+				// Allow: backspace, delete, tab, escape, enter and .
+				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+					 // Allow: Ctrl+A, Command+A
+					(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+					 // Allow: home, end, left, right, down, up
+					(e.keyCode >= 35 && e.keyCode <= 40)) {
+						 // let it happen, don't do anything
+						 return;
+				}
+				// Ensure that it is a number and stop the keypress
+				if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+					e.preventDefault();
+				}
+			});
+	});
+ </script>
     <!-- Jquery Files Link -->
     <script type="text/javascript" src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery-2.1.4.min.js"></script>
     <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/owl.carousel.js"></script>

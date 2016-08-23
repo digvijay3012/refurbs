@@ -3,17 +3,36 @@
 Template Name: Services
 */
 get_header();
+global $post;
+?>
+<?php 
+function custom_echo($x, $length)
+{
+  if(strlen($x)<=$length)
+  {
+    echo $x;
+  }
+  else
+  {
+    $y=substr($x,0,$length) . '';
+    echo $y;
+  }
+}
 ?>
     <section class="banner gallery_banner">
         <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active"> <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/service_banner.jpg" alt="service_banner">
+                <div class="item active"> 
+				<?php $aboutData	= get_field('background_image', get_the_ID()); 
+					$backGroundImageUrl 	=	$aboutData['sizes']['page_backgound_image'];
+				?>
+				<img src="<?php echo $backGroundImageUrl; ?>" alt="service_banner">
                     <div class="banner-caption">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h2>Services</h2> </div>
+                                    <h2><?php echo $image_text		= get_field('image_text', get_the_ID()); ?></h2> </div>
                             </div>
                         </div>
                     </div>
@@ -28,45 +47,36 @@ get_header();
                 <div class="col-sm-12">
                     <h2><span>SERVICES</span></h2>
                     <div id="portfoliolist">
+					<?php
+							$args 		= array( 'post_type' => 'service','post_status' => 'publish','posts_per_page' => 3, 'order'=> 'ASC', );
+							$GetPosts 	= get_posts( $args );
+							foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
+						?>
                                         <div data-cat="retail" class="portfolio retail" style="display: inline-block;" data-bound="">
                                             <div class="portfolio-wrapper"> 
-                                                <figure><img alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/retail.png"></figure>
+                                                <figure>
+													<?php
+														if ( has_post_thumbnail() ) { 
+															the_post_thumbnail( 'home-service' ); 
+														}
+													?>
+												</figure>
                                                 <div class="portfolio_ovrlay">
                                                   <div class="display-table">
                                                     <div class="display-table-cell">  
-                                                   <h4>Retail</h4> 
-                                                   <p>This is Photoshop's version  of Lorem Ipsum.</p>
+                                                   <h4><?php  the_title(); ?></h4> 
+                                                   <p><?php $getContent	=	get_the_content(); 
+															echo custom_echo($getContent,35);
+														?></p>
                                                       </div>
                                                     </div>  
                                                 </div>
                                             </div>
                                         </div>
-                                        <div data-cat="hospitality" class="portfolio hospitality" style="display: inline-block;" data-bound="">
-                                            <div class="portfolio-wrapper"> 
-                                                <figure><img alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/hospitality.png"></figure>
-                                                <div class="portfolio_ovrlay">
-                                                  <div class="display-table">
-                                                    <div class="display-table-cell">  
-                                                   <h4>Hospitality</h4> 
-                                                   <p>This is Photoshop's version  of Lorem Ipsum.</p>
-                                                      </div>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div data-cat="office" class="portfolio office" style="display: inline-block;" data-bound="">
-                                            <div class="portfolio-wrapper"> 
-                                                <figure><img alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/office.png"></figure>
-                                                <div class="portfolio_ovrlay">
-                                                  <div class="display-table">
-                                                    <div class="display-table-cell">  
-                                                   <h4>Office</h4> 
-                                                   <p>This is Photoshop's version  of Lorem Ipsum.</p>
-                                                      </div>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                        </div>
+                                     <?php 
+										endforeach; 
+										wp_reset_postdata();
+									?>	
                                     </div>
                 </div>
             </div>
@@ -78,7 +88,7 @@ get_header();
                 <div class="col-sm-12">
                     <div id="owl-demo" class="owl-carousel owl-theme">
                       <?php
-							global $post;
+							
 							$args 		= array( 'post_type' => 'client_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
 							$GetPosts 	= get_posts( $args );
 							foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
