@@ -87,9 +87,7 @@ function custom_echo($x, $length)
 										?>
 										<span></span></figure>
                                         <h4><?php  the_title(); ?></h4>
-										<p><?php $getContent	=	get_the_content(); 
-											echo custom_echo($getContent,200);
-										?></p>
+										<p><?php echo $short_description = get_field('short_description', $post->ID); ?></p>
                                     </div>
                                 </a>
                             </li>
@@ -145,15 +143,16 @@ function custom_echo($x, $length)
                             <p> 
 							<?php echo $aboutData		= get_field('home_page_about_us', get_the_ID()); ?>
 							</p> <a href='<?php echo site_url()."/about-us/"; ?>' title="">Read More</a> </div>
-                        <figure> 
-						<?php $aboutData		= get_field('home_about_us_image', get_the_ID()); 
-									$aboutImageUrl 	=	$aboutData['sizes']['home-about-us'];
-							?>
-						<img src="<?php echo $aboutImageUrl; ?>" alt="abt_img"> </figure>
+                        <!--<figure> 
+						<?php 
+							/* $aboutData		= 	get_field('home_about_us_image', get_the_ID()); 
+							$aboutImageUrl 	=	$aboutData['sizes']['home-about-us']; */
+						?>
+						<img src="<?php //echo $aboutImageUrl; ?>" alt="abt_img"> </figure>-->
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="home_abt_rght">
+                    <div class="home_abt_rght" id="quotes">
                         <h4>CONTACT US</h4>
                        <?php echo do_shortcode('[contact-form-7 id="51" title="Home Page Contact Form"]'); ?>
                     </div>
