@@ -54,7 +54,7 @@ function custom_echo($x, $length)
 						?>
                                         <div data-cat="retail" class="portfolio retail" style="display: inline-block;" data-bound="">
                                             <div class="portfolio-wrapper"> 
-											<a href="<?php echo site_url(); ?>/services-detail/#s_<?php echo $post->ID; ?>">
+											<a href="<?php the_permalink($post->ID); ?>">
                                                 <figure>
 													<?php
 														if ( has_post_thumbnail() ) { 
@@ -115,4 +115,4 @@ function custom_echo($x, $length)
             </div>
         </div>
     </section>
- <?php get_footer(); ?>
+ <?php get_footer(); ?>		

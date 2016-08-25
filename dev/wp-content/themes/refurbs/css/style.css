@@ -56,7 +56,7 @@ body {
 body {
     -webkit-text-stroke: .1px
 }
-
+body:before,body:after{content:none!important}
 img {
     max-width: 100%;
     vertical-align: top;
@@ -694,7 +694,7 @@ header nav ul li a {
     left: 119px;
     margin-top: 28px;
     position: absolute;
- width: 444px;height:553px;padding-right: 15px;
+ width:85%;height:517px;padding-right: 15px;
 }
 
 .home_abt_cntnt a {
@@ -841,7 +841,7 @@ header nav ul li a {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
-    border: 1px solid #f7941e;
+    border: 1px solid #f7941e;padding: 0;
 }
 
 .home_abt_rght input[type="submit"]:hover {
@@ -849,16 +849,50 @@ header nav ul li a {
     color: #767676;
 }
 
+.home_abt_rght .ajax-loader {
+    position: absolute;
+    top: 25px;
+    right: 18px;
+}
+.home_abt_rght p{position: relative;}
+.home_abt_rght span.wpcf7-not-valid-tip{display:none !important;}
 
+  div.wpcf7-mail-sent-ok {
+      background: #bfeebf none repeat scroll 0 0;
+      border: 2px solid #a1e1a1!important;
+      color: #00b500;
+      display: block!important;
+      float: left;
+      margin: 15px 0 0;
+      text-align: center;
+      width: 100%;
+      font-size: 15px!important;
+      padding: 10px!important
+  }
+
+ div.wpcf7-validation-errors,
+  div.wpcf7-mail-sent-ng,
+  div.wpcf7-spam-blocked {
+      border: 2px solid #e5aaaa;
+      color: #d73434;
+      background: #e9c8c8;
+      float: left;
+      margin: 15px 0 0;
+      text-align: center;
+      width: 100%;
+      font-size: 15px;
+      padding: 10px;
+  }
+.home_abt_rght input.wpcf7-not-valid,.home_abt_rght textarea.wpcf7-not-valid{border:1px solid #e5aaaa;}
 /**** Testimonial Section ****/
 
 .testimonial {
     background: url(../images/testimonial_banner.jpg) no-repeat;
-    min-height: 774px;
-    background: -size: cover;
+ 
+    background-size: cover;
     width: 100%;
     text-align: center;
-    padding: 71px 0;
+    padding: 51px 0 91px;
 }
 
 .testimonial h2 {
@@ -881,7 +915,7 @@ header nav ul li a {
     position: relative;
     padding-left: 108px;
     width: 87%;
-    margin: 102px auto auto;
+    margin: 60px auto auto;
 }
 
 .testi_bx:before {
@@ -890,7 +924,7 @@ header nav ul li a {
     top: -14px;
     content: '\f10d';
     font-family: 'FontAwesome';
-    font-size: 82px;
+    font-size: 64px;
     color: #fff;
     line-height: 0;
 }
@@ -907,12 +941,12 @@ header nav ul li a {
     display: inline-block;
     float: left;
     margin-right: 2%;
-    width: 35%;
+    width: 35%;display:none;
 }
 
 .testimonial .carousel-indicators {
-    margin-left: -47%;
-    bottom: -70px;
+   
+    bottom:-47px;
 }
 
 .testimonial .carousel-indicators .active {
@@ -933,10 +967,11 @@ header nav ul li a {
 }
 
 .testi_bx_rght {
-    display: inline-block;
+      display: inline-block;
     text-align: left;
     width: 63%;
-    margin-top: 18px;
+    margin-top: 0;
+    width: 100%;
 }
 
 .testi_bx_rght p {
@@ -952,7 +987,7 @@ header nav ul li a {
     color: #f7941e;
     font-family: 'Gotham';
     font-weight: 300;
-    margin-top: 52px;
+    margin-top: 15px;
     display: inline-block;
 }
 
@@ -1468,7 +1503,7 @@ padding-top: 16px;
 .contact_form_sec form {
     background: #f5f5f5;
     border: 2px solid #ececec;
-    padding: 0 123px 62px;
+    padding: 0 123px 84px;
     position: relative;
 }
 
@@ -1551,14 +1586,21 @@ padding-top: 16px;
     border: 1px solid #f7941e;
     height: 63px;
     display: inline-block;
-    width: 100%;
+    width: 100%;padding: 0;
 }
 
 .contact_form_sec input[type="submit"]:hover {
     color: #767676;
     background: transparent;
 }
-
+.contact_form_sec span.wpcf7-not-valid-tip{display:none !important;}
+.contact_form_sec input.wpcf7-not-valid,.contact_form_sec textarea.wpcf7-not-valid{border:1px solid #e5aaaa;}
+.contact_form_sec p{position: relative;}
+.contact_form_sec .ajax-loader {
+  position: absolute;
+  right: 30px;
+  top: 23px;
+}
 
 /**** About Page ****/
 
@@ -1661,7 +1703,7 @@ padding-top: 16px;
 
 .service_main {
     background: #f6f6f6;
-    padding: 75px 0 84px;
+    padding: 75px 0 84px;margin: 0;
 }
 
 .service_main h2 span {
@@ -1693,10 +1735,10 @@ padding-top: 16px;
     padding-top: 53px;
 }
 
-.service_bx_lft {
+.service_bx_rght figure {
     position: relative;
     width: 46%;
-    float: left;
+    float: left;margin-right: 45px;
 }
 
 .service_bx:nth-child(even) .service_bx_lft {
@@ -1739,7 +1781,7 @@ padding-top: 16px;
 
 .service_bx_rght {
     float: right;
-    width: 45%;
+    width: 100%;
 }
 
 .service_bx_rght h4 {
@@ -1748,7 +1790,8 @@ padding-top: 16px;
     line-height: 30px;
     margin-bottom: 25px;
     margin-top: -5px;
-    text-transform: uppercase;
+    text-transform: uppercase;display: inline-block;
+    vertical-align: top;
 }
 
 .service_bx_rght p {
@@ -1886,15 +1929,13 @@ padding-top: 16px;
         font-size: 14px;
         line-height: 33px;
     }
-    .testimonial {
-        padding: 60px 0;
-    }
+    .testi_bx{width:100%;}
     .testimonial h2 {
         font-size: 50px;
         line-height: 62px;
     }
     .testi_bx::before {
-        font-size: 72px;
+        font-size: 50px;
     }
     .testi_bx_img {
         height: 300px;
@@ -1913,12 +1954,8 @@ padding-top: 16px;
     .testi_bx_rght span.author_name {
         margin-top: 14px;
     }
-    .testimonial .carousel-indicators {
-        margin-left: -48.5%;
-    }
-    .testimonial {
-        min-height: 654px;
-    }
+   
+ 
     footer {
         padding: 50px 0 38px;
     }
@@ -1957,9 +1994,7 @@ padding-top: 16px;
         font-size: 32px;
         width: 100%;
     }
-    .home_abt_cntnt {
-        width: 38%;
-    }
+  
     .home_abt_rght h4 {
         font-size: 40px;
     }
@@ -1970,7 +2005,7 @@ padding-top: 16px;
     .home_abt_cntnt {
         height: 546px;
         overflow: auto;
-        width: 38%;margin-top: 20px;
+       margin-top: 20px;width:81%;
     }
     .home_abt_rght form::after {
         bottom: -28px;
@@ -2050,7 +2085,7 @@ padding-top: 16px;
     }
     /**** Service Inner Page ****/
     
-    .service_bx_rght{width:50%;}
+    /* .service_bx_rght{width:50%;} */
     
     .service_bx_rght h4{margin-bottom: 15px;}
     .service_bx_rght p {
@@ -2068,8 +2103,6 @@ padding-top: 16px;
     ::i-block-chrome,.testimonial .carousel-indicators{bottom:-44px;}
 }
 @media (max-width:1365px){
-  .testimonial .carousel-indicators {
-  margin-left: -49.4%;
-}  
+ 
 
 }

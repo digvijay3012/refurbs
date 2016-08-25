@@ -35,15 +35,7 @@ function custom_echo($x, $length)
 							the_post_thumbnail('home_slider_img', array( 'alt' => $bannrTitle )); 
 						}
 				?>  
-                    <div class="banner-caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                   <?php the_content(); ?>
-								</div>
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
               <?php 
 			  $flag++;
@@ -60,6 +52,26 @@ function custom_echo($x, $length)
                     </div>
                 </div>
             </div>
+			<?php
+			
+				$args 		= array( 'post_type' => 'home_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
+				$GetPosts 	= get_posts( $args );
+				foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
+			?>
+			   <div class="banner-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                   <?php the_content(); ?>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+					 <?php 
+			  
+				endforeach; 
+				wp_reset_postdata();
+			?>	  
         </div>
     </section>
     <!--banner end-->
@@ -76,7 +88,7 @@ function custom_echo($x, $length)
 							foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
 						?>
 						 <li>
-                                <a href="<?php echo site_url(); ?>/services-detail/#s_<?php echo $post->ID; ?>" title="<?php  the_title(); ?>">
+                                <a href="<?php the_permalink($post->ID); ?>" title="<?php  the_title(); ?>">
                                     <div class="home_service_bx">
                                         <figure>
 										<?php
