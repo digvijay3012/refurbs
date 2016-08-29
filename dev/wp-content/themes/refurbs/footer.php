@@ -100,9 +100,9 @@
 											} ?>
 										<?php endif; ?>
                                 <?php if ( function_exists( 'ot_get_option' ) ) : ?>
-										<?php  $pinterest = ot_get_option( 'pinterest' ); 
-											if($instagram !=''){
-												echo '<li> <a href="'.$pinterest.'" target="_blank" title=""><i class="fa fa-pinterest-p" aria-hidden="true"></i><span>Pinterest</span></a> </li>';
+										<?php  $google_plus = ot_get_option( 'google_plus' ); 
+											if($google_plus !=''){
+												echo '<li> <a href="'.$google_plus.'" target="_blank" title=""><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google Plus</span></a> </li>';
 											} ?>
 										<?php endif; ?>
                                
@@ -167,8 +167,9 @@
             owl.owlCarousel({
                 itemsCustom: [
                 [320, 1]
-                 , [480, 2]
-                , [992, 5]
+                , [480, 2]
+                
+                , [992, 3]
                 , [1200, 5]
                 , [1500, 5]]
                 , navigation: false
@@ -188,6 +189,22 @@
                 });
             });
         })(jQuery);
+    </script>
+<script>
+        jQuery(function () {
+            jQuery('.banner-caption a[href*=#]:not([href=#])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = jQuery(this.hash);
+                    target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        jQuery('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
     </script>
     <script type="text/javascript" src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/bootstrap.min.js"></script>
 	

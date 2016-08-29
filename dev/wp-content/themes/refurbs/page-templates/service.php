@@ -54,7 +54,7 @@ function custom_echo($x, $length)
 						?>
                                         <div data-cat="retail" class="portfolio retail" style="display: inline-block;" data-bound="">
                                             <div class="portfolio-wrapper"> 
-											<a href="<?php the_permalink($post->ID); ?>">
+											
                                                 <figure>
 													<?php
 														if ( has_post_thumbnail() ) { 
@@ -62,17 +62,21 @@ function custom_echo($x, $length)
 														}
 													?>
 												</figure>
+                                                <a href="<?php the_permalink($post->ID); ?>">
                                                 <div class="portfolio_ovrlay">
                                                   <div class="display-table">
                                                     <div class="display-table-cell">  
+                                                   
                                                    <h4><?php  the_title(); ?></h4> 
                                                    <p><?php $getContent	=	get_the_content(); 
 															echo custom_echo($getContent,35);
 														?></p>
+                                                         
                                                       </div>
                                                     </div>  
                                                 </div>
-												</a>
+                                                </a>     
+												
                                             </div>
                                         </div>
                                      <?php 

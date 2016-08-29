@@ -88,7 +88,7 @@ get_header();
 	<?php $moreaboutData			= get_field('more_about_us_image', get_the_ID()); 
 		$more_about_us_imageUrl 	=	$moreaboutData['sizes']['more_about_us_image'];
 	?>
-    <div class="img_lft" style="background:url(<?php echo $more_about_us_imageUrl; ?>) no-repeat left bottom;"></div>  
+
      <div class="container">
       <div class="row">
        <div class="col-sm-12">

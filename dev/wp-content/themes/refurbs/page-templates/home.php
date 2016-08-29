@@ -35,7 +35,15 @@ function custom_echo($x, $length)
 							the_post_thumbnail('home_slider_img', array( 'alt' => $bannrTitle )); 
 						}
 				?>  
-                 
+                  <div class="banner-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                   <?php the_content(); ?>
+								</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
               <?php 
 			  $flag++;
@@ -52,26 +60,7 @@ function custom_echo($x, $length)
                     </div>
                 </div>
             </div>
-			<?php
 			
-				$args 		= array( 'post_type' => 'home_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
-				$GetPosts 	= get_posts( $args );
-				foreach ( $GetPosts as $post ) : setup_postdata( $post ); 
-			?>
-			   <div class="banner-caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                   <?php the_content(); ?>
-								</div>
-                            </div>
-                        </div>
-                    </div>
-					 <?php 
-			  
-				endforeach; 
-				wp_reset_postdata();
-			?>	  
         </div>
     </section>
     <!--banner end-->
@@ -180,7 +169,7 @@ function custom_echo($x, $length)
                 <li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic1" data-slide-to="1"></li>
                 <li data-target="#carousel-example-generic1" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic1" data-slide-to="3"></li>
+             
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
