@@ -27,7 +27,7 @@
                             <ul>
 							<?php $defaults = array(
 							'theme_location'  => '',
-							'menu'            => 'main_menu',
+							'menu'            => 'footer_menu',
 							'container'       => '',
 							'container_class' => '',
 							'container_id'    => '',
@@ -61,7 +61,10 @@
                                 </li>
                                 <li>
                                     <label><i class="fa fa-mobile" aria-hidden="true"></i><span>Tel No:</span></label>
-                                    <p><a href="tel:123-456-7890" title=""><?php if ( function_exists( 'ot_get_option' ) ) : ?>
+                                    <p><a href="tel:<?php if ( function_exists( 'ot_get_option' ) ) : ?>
+										<?php echo $footer_telephone = ot_get_option( 'footer_telephone' ); ?>
+								
+										<?php endif; ?>" title=""><?php if ( function_exists( 'ot_get_option' ) ) : ?>
 										<?php echo $footer_telephone = ot_get_option( 'footer_telephone' ); ?>
 								
 										<?php endif; ?></a></p>
@@ -207,7 +210,15 @@
         });
     </script>
     <script type="text/javascript" src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/bootstrap.min.js"></script>
-	
+<script>
+   $(document).ready(function () {
+		 $("#menu-item-167 a").prepend('<i class="fa fa-caret-right" aria-hidden="true"></i>');
+		$("#menu-item-168 a").prepend('<i class="fa fa-caret-right" aria-hidden="true"></i>');
+		$("#menu-item-169 a").prepend('<i class="fa fa-caret-right" aria-hidden="true"></i>');
+		$("#menu-item-170 a").prepend('<i class="fa fa-caret-right" aria-hidden="true"></i>');
+		$("#menu-item-171 a").prepend('<i class="fa fa-caret-right" aria-hidden="true"></i>');
+   });
+</script>	
 </body>
 
 </html>

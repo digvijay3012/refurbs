@@ -1290,7 +1290,9 @@ footer {
 .gallery {
     padding: 75px 0 62px;
     text-align: center;
-    width: 100%;margin-right: 0;margin-left: 0;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .gallery h2 {
@@ -1950,12 +1952,14 @@ footer {
     line-height: 36px;
     margin-bottom: 15px;
     text-transform: uppercase;
-    margin-top: 11px;font-weight: bold;
+    margin-top: 11px;
+    font-weight: bold;
 }
 
 .gallery.service_innr_sec {
     margin-bottom: 0;
-    padding-bottom: 16px;margin-right: 0;
+    padding-bottom: 16px;
+    margin-right: 0;
 }
 
 .service_slider {
@@ -2491,7 +2495,7 @@ footer {
     }
     .home_abt_lft h2 {
         font-size: 80px;
-        margin-left: -179px;
+        margin-left: -171px;
         top: 200px;
     }
     .home_abt_cntnt {
@@ -2502,7 +2506,7 @@ footer {
     div.wpcf7-spam-blocked,
     div.wpcf7-mail-sent-ok {
         font-size: 13px !important;
-    }
+    } .home_abt_rght form::after{display:none;}
     /**** Testimonial Section ****/
     .testimonial {
         padding: 40px 0 71px;
@@ -2642,7 +2646,7 @@ footer {
     .gallery.service_main {
         padding-bottom: 47px;
     }
- /*   #portfoliolist .portfolio_ovrlay {
+    /*   #portfoliolist .portfolio_ovrlay {
         opacity: 1;
     }
     #portfoliolist .portfolio-wrapper:after {
@@ -2770,6 +2774,7 @@ footer {
         width: 100%;
         margin-right: 0;
     }
+   
     /**** Services Page ****/
     .gallery.service_main {
         padding: 41px 0 48px;
@@ -2784,18 +2789,41 @@ footer {
         margin-top: 35px;
     }
     /**** Services Inner Page ****/
-   
-    .gallery.service_innr_sec{padding-bottom: 0;}
+    .gallery.service_innr_sec {
+        padding-bottom: 0;
+    }
     .service_bx_rght figure {
-  margin-bottom: 0;
-  margin-right: 30px;
-  width: 36%;
-}.service_bx_rght h6 {
-  font-size: 18px;
-  line-height: 24px;
-}#filters li span {
-  font-size: 16px;
-}
+        margin-bottom: 0;
+        margin-right: 15px;
+        width: 32%;
+    }
+    .service_bx_rght h6 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    #filters li span {
+        font-size: 16px;
+    }
+    /**** Contact Page ****/
+    .contact_bx {
+        padding-top: 30px;
+    }
+    .contact_form_sec input[type="submit"] {
+        font-size: 26px;
+    }
+    .contact_form_sec h3 {
+        font-size: 30px;
+        line-height: 35px;
+    }
+    .contact_form_sec form::after {
+        bottom: -53px;
+    }
+    .contact_form_sec input[type="submit"] {
+        font-size: 23px;
+    }
+    .contact_form_sec .ajax-loader{top:18px;}
+    /**** 404 Page ****/
+    .error-404{margin-top: 85px;}
 }
 
 @media (max-width:991px) {
@@ -2930,6 +2958,37 @@ footer {
     .service_main .portfolio_ovrlay h4 {
         font-size: 19px;
     }
+    /**** Contact Page ****/
+    .contact_bx {
+        padding: 15px;
+    }
+    .contact_bx figure {
+        margin-right: 0;
+        display: block;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .contact_bx figure span {
+        float: none;
+        display: inline-block;
+    }
+    .contact_bx_lft {
+        width: 100%;
+        text-align: center;
+    }
+    .contact_tp .col-sm-4:last-child .contact_bx {
+        padding: 15px;
+    }
+    .contact_tp .col-sm-4:last-child .contact_bx_lft {
+        width: 100%;
+    }
+    .contact_bx_lft p {
+        font-size: 13px;
+    }
+    .contact_form_sec form {
+        padding: 0 84px 84px;
+    }/**** 404 Page ****/
+    .error-404{margin-top: 68px;}
 }
 
 @media (max-width:767px) {
@@ -3159,40 +3218,96 @@ footer {
     .service_main #portfoliolist .portfolio:nth-child(3n) {
         margin-bottom: 0;
     }
-    
-    
     /**** Service Inner Page ****/
     .service_bx_rght figure {
-  display: block;
-  margin-bottom: 30px;
-  margin-right: 0;
-  text-align: center;
-  width: 100%;
-}
-    .service_bx{padding-top: 23px;}
+        display: block;
+        margin-bottom: 30px;
+        margin-right: 0;
+        text-align: center;
+        width: 100%;
+    }
+    .service_bx {
+        padding-top: 23px;
+    }
     .service_bx_rght h4 {
-  font-size: 21px;
-  line-height: 24px;
-  text-align: center;
-  width: 100%;margin-bottom: 10px;
-}.service_bx_rght h6 {
-  font-size: 16px;
-  
-}
-    .service_bx_rght ul li{margin-bottom: 10px;}.service_bx_rght img {
-  width: 200px;
-}.gallery.service_innr_sec {
-  padding: 24px 0 0px;
-}
+        font-size: 21px;
+        line-height: 24px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .service_bx_rght h6 {
+        font-size: 16px;
+    }
+    .service_bx_rght ul li {
+        margin-bottom: 10px;
+    }
+    .service_bx_rght img {
+        width: 200px;
+    }
+    .gallery.service_innr_sec {
+        padding: 24px 0 0px;
+    }
     .service_slider {
-  padding: 30px 0;
-}
+        padding: 30px 0;
+    }
     /*** Gallery Page ****/
-    .gallery{padding:25px 0}
-#filters {
-  margin: 19px auto;
-    }#filters li{margin-right: 35px;}
-    #portfoliolist .portfolio{margin-bottom: 15px;}
+    .gallery {
+        padding: 25px 0
+    }
+    #filters {
+        margin: 19px auto;
+    }
+    #filters li {
+        margin-right: 35px;
+    }
+    #portfoliolist .portfolio {
+        margin-bottom: 15px;
+    }
+    /**** Contact Page ****/
+    .contact_tp {
+        margin-top: 30px;
+    }
+    .contact_bx {
+        min-height: 0;
+        margin-bottom: 15px;
+    }
+    .contact_bx_lft p {
+        font-size: 14px;
+    }
+    .contact_form_sec {
+        margin-top: 20px;overflow: hidden;
+    }
+    .contact_form_sec form {
+        padding: 0 15px 30px;
+    }
+    .contact_form_sec h3 {
+        font-size: 25px;
+        line-height: 27px;
+        margin-bottom: 24px;
+        margin-top: 24px;
+    }
+    .contact_form_sec input[type="text"], .contact_form_sec input[type="email"], .contact_form_sec input[type="tel"]{margin-bottom: 15px;}
+    .contact_form_sec .ajax-loader {
+  top: 20px;
+}
+    .contact_form_sec form::after {
+  width: 110%;bottom:-59px;left: -26px;
+}
+    .contact_form_sec div.wpcf7-validation-errors,.contact_form_sec div.wpcf7-mail-sent-ng, .contact_form_sec div.wpcf7-spam-blocked, .contact_form_sec div.wpcf7-mail-sent-ok{margin-top: 56px;}
+    /**** 404 Page ****/
+    .error-404 {
+
+  padding-bottom: 22px;
+  padding-top: 15px;
+}
+    .error_section h1{font-size: 26px; margin-top: 25px;}
+    .error_section p{font-size: 15px;margin:7px auto 0;}
+    .error_btm_cntnt {
+  padding: 15px 0 27px;
+}
+    .error_btm_cntnt h1{margin-bottom: 10px;font-size: 100px;line-height: 110px;}
+    .error_btm_cntnt p{font-size: 16px;}
 }
 
 @media (max-width:479px) {
@@ -3250,15 +3365,27 @@ footer {
     }
     /**** Service Inner Page ****/
     .service_bx_rght img {
-  width: 100%;
-}
+        width: 100%;
+    }
     /**** Gallery Page ****/
-    #filters li{margin-right: 17px;}
+    #filters li {
+        margin-right: 17px;
+    }
     #filters li span {
-  font-size: 14px;
-}
+        font-size: 14px;
+    }
     #portfoliolist .portfolio {
-  margin-right: 0;
-  width: 100%;
+        margin-right: 0;
+        width: 100%;
+    }
+    /**** Contact Page ****/
+    .contact_form_sec .ajax-loader {
+  top: 18px;
+}
+    .contact_form_sec form::after{bottom: -61px;}
+    /**** 404 Page ****/
+    
+    .error-404 {
+  margin-top: 122px;
 }
 }
