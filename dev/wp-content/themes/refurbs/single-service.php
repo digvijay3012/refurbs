@@ -13,7 +13,9 @@ get_header(); ?>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-				<?php $aboutData			= get_field('background_image', 86); 
+				<?php 
+				global $post;
+				$aboutData			= get_field('inner_service_background_image', $post->ID); 
 					$backGroundImageUrl 	=	$aboutData['sizes']['page_backgound_image'];
 				?>
 				<img src="<?php echo $backGroundImageUrl; ?>" alt="service_innr_banner">
@@ -73,10 +75,20 @@ get_header(); ?>
         <div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic1" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic1" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic1" data-slide-to="3"></li>
+              <?php
+				$owlflag=0;
+				$argment 		= array( 'post_type' => 'testinomial_slider','post_status' => 'publish','posts_per_page' => -1, 'order'=> 'ASC', );
+				$getPosts 	= get_posts( $argment );
+				foreach ( $getPosts as $post ) : setup_postdata( $post ); 
+			?>
+                <li data-target="#carousel-example-generic1" data-slide-to="<?php echo $owlflag; ?>" 
+				<?php if($owlflag==0){ echo 'class="active"'; } ?>> </li>
+              
+             <?php 
+			  $owlflag++;
+				endforeach; 
+				wp_reset_postdata();
+			?>	
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">

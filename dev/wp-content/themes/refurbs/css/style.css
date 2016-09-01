@@ -329,7 +329,7 @@ header nav ul li a {
 .banner .carousel-fade .carousel-control {
     z-index: 2;
     top: auto;
-    bottom: 330px;
+    bottom: 335px;
 }
 
 .prev_arw {
@@ -1564,7 +1564,7 @@ footer {
 .contact_form_sec form::after {
     background: rgba(0, 0, 0, 0) url("../images/contact_shadow1.png") no-repeat;
     background-size: 100%;
-    bottom: -48px;
+    bottom: -51px;
     content: "";
     height: 61px;
     left: -33px;
@@ -2051,7 +2051,7 @@ footer {
 }
 
 #owl-demo1 .item img {
-    width: 100%;
+    width: 100%;padding-top:1px;
 }
 
 .service_bx_rght p:empty {
@@ -2164,7 +2164,7 @@ footer {
         font-size: 50px;
     }
     .banner .carousel-fade .carousel-control {
-        bottom: 208px;
+        bottom: 238px;
     }
     .home_service {
         padding: 70px 0;
@@ -2521,11 +2521,11 @@ footer {
     }
     .testi_bx {
         margin: 52px auto auto;
-        padding-left: 74px;
+        padding-left:0px;
         min-height: 200px;
     }
     .testi_bx_rght p {
-        line-height: 31px;
+        line-height: 31px;padding-left: 74px;
     }
     .testimonial .carousel-indicators {
         bottom: -34px;
@@ -2590,11 +2590,14 @@ footer {
         margin-bottom: 0 !important;
     }
     .top_footer .ftr_sec1 ul {
-        margin-top: 20px;
+        margin-top:16px;
     }
     .top_footer .ftr_adrs ul {
-        margin-top: 24px;
+        margin-top: 21px;
     }
+    .ftr_social ul {
+  margin-top: 20px !important;
+}
     .copyright_innr {
         padding-top: 15px;
     }
@@ -2804,6 +2807,7 @@ footer {
     #filters li span {
         font-size: 16px;
     }
+     #owl-demo1 .item:hover{transform:scale(0.9) !important;-webkit-transform:scale(0.9) !important;-mzo-transform:scale(0.9) !important;-ms-transform:scale(0.9) !important;}
     /**** Contact Page ****/
     .contact_bx {
         padding-top: 30px;
@@ -2822,6 +2826,7 @@ footer {
         font-size: 23px;
     }
     .contact_form_sec .ajax-loader{top:18px;}
+    .contact_form_sec form::after{display: none;}
     /**** 404 Page ****/
     .error-404{margin-top: 85px;}
 }
@@ -2919,7 +2924,7 @@ footer {
     }
     .testi_bx {
         margin: 42px auto auto;
-        padding-left: 74px;
+
         min-height: 250px;
     }
     /**** Footer Section ****/
@@ -3104,7 +3109,13 @@ footer {
     }
     .home_service_bx img {
         width: 100%;
-    }
+    }.home_service_innr ul li {
+  display: block;
+  float: none;
+  margin: auto auto 30px;
+  text-align: center;
+  width: 75%;
+    }.home_service_innr ul li:nth-child(3n){margin-right: auto;}
     /**** Testimonial Section ****/
     .testimonial {
         padding: 30px 0 54px;
@@ -3118,10 +3129,10 @@ footer {
     }
     .testi_bx_rght p {
         font-size: 14px;
-        line-height: 24px;
+        line-height: 24px;padding-left: 37px;
     }
     .testi_bx {
-        padding-left: 37px;
+    
         min-height: 260px;
     }
     /**** Footer Section ****/
@@ -3150,7 +3161,7 @@ footer {
         width: 72%;
     }
     .atrate {
-        font-size: 15px !important;
+        font-size: 21px !important;
     }
     .top_footer .ftr_sec1 ul li {
         margin-bottom: 15px;
@@ -3251,6 +3262,8 @@ footer {
     .service_slider {
         padding: 30px 0;
     }
+   
+    
     /*** Gallery Page ****/
     .gallery {
         padding: 25px 0
@@ -3327,6 +3340,7 @@ footer {
     #responsive-menu-button {
         top: 75px !IMPORTANT;
     }
+    .home_service_innr ul li{width: 100%;}
     /**** Banner Section ****/
     .banner {
         margin-top: 123px;
@@ -3367,6 +3381,7 @@ footer {
     .service_bx_rght img {
         width: 100%;
     }
+    
     /**** Gallery Page ****/
     #filters li {
         margin-right: 17px;

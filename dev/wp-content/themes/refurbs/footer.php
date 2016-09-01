@@ -193,19 +193,62 @@
             });
         })(jQuery);
     </script>
+
 <script>
+
         jQuery(function () {
             jQuery('.banner-caption a[href*=#]:not([href=#])').click(function () {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+				var width = jQuery(window).width(), height = jQuery(window).height();
+				
+					if (width > 1200) {
+						 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+							var target = jQuery(this.hash);
+							target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+							if (target.length) {
+								jQuery('html,body').animate({
+									scrollTop: target.offset().top
+								}, 1000);
+								return false;
+							}
+						}
+					} 
+				if((width >992) && (width <= 1199)){
+					 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                     var target = jQuery(this.hash);
                     target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
                     if (target.length) {
                         jQuery('html,body').animate({
-                            scrollTop: target.offset().top
+                            scrollTop: target.offset().top -84
+                        }, 1000);
+                        return false;
+                    }
+				}
+				}
+				if((width >480) && (width <= 991)){
+					 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = jQuery(this.hash);
+                    target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        jQuery('html,body').animate({
+                            scrollTop: target.offset().top -69
                         }, 1000);
                         return false;
                     }
                 }
+				}
+              if(width <= 479){
+					 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = jQuery(this.hash);
+                    target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        jQuery('html,body').animate({
+                            scrollTop: target.offset().top -122
+                        }, 1000);
+                        return false;
+                    }
+                }
+				}
+              
             });
         });
     </script>
