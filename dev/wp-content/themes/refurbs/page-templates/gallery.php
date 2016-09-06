@@ -82,11 +82,13 @@ get_header(); ?>
 										$getGalleryId		=	$getTerm->term_id;
 								$getGalleryData 			=	get_posts(array(
 											'post_type' => 'refurbs_gallery',
+											'posts_per_page' => -1 ,
 											'tax_query' => array(
 												array(
 												'taxonomy' => 'gallery_cat',
 												'field' => 'term_id',
-												'terms' => $getGalleryId)
+												'terms' => $getGalleryId),
+                                                
 											))
 										);
 										if ( $getGalleryData ) {
