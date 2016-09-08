@@ -425,7 +425,7 @@ function my_loginlogo() {
   echo '<style type="text/css">
     h1 a {
       background-image: url(' . get_template_directory_uri() . '/images/admin-page-logo.png) !important;
-	      height: 100px !important;
+	      height: 147px !important;
     }
     .login h1 a{height:auto;width:auto;background-size:100%;}
     .login h1 a:focus{box-shadow:none !important;}
